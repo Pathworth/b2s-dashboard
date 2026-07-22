@@ -115,17 +115,17 @@ var esc=function(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').
 var WS=[
  {n:1,title:"Sponsors & Fundraising",owner:"Jermaine · LaToya Henry",chip:"hot",chipText:"Critical",due:"Aug 1",
   items:[
-   {t:"Finalize the ask and tiers ($250 / $500 / $1,000)",who:"by Jul 8"},
-   {t:"Build the sponsor target list (DTE, Kroger, Huntington, First Independence, MGM food)",who:"by Jul 8"},
-   {t:"Stand up the Stripe link and donation QR",who:"by Jul 15"},
+   {t:"Finalize the ask and tiers ($250 / $500 / $1,000)",who:"this week"},
+   {t:"Build the sponsor target list (DTE, Kroger, Huntington, First Independence, MGM food)",who:"this week"},
+   {t:"Stand up the Stripe link and donation QR",who:"this week"},
    {t:"Lock sponsor logos for the flyer",who:"by Jul 20"},
    {t:"Send the donation letter",who:"by Aug 1"}]},
- {n:2,title:"Backpacks & Kits",owner:"Jermaine",chip:"hot",chipText:"Order now",due:"Jul 18",
+ {n:2,title:"Backpacks & Kits",owner:"Jermaine",chip:"hot",chipText:"Place order",due:"This week",
   items:[
-   {t:"Pick the bag and kit mix in the Builder",who:"by Jul 11"},
-   {t:"Confirm Bags in Bulk prices (7860SS, 7864SS) + price-check Backpacks USA",who:"by Jul 14"},
-   {t:"Get director sign-off on the number",who:"by Jul 16"},
-   {t:"Place the order (before peak-season stock-outs)",who:"by Jul 18"}]},
+   {t:"Pick the mix (Trailmaker 7860SS elem, 7864SS high school)",who:"done",done:true},
+   {t:"Director cleared the order (Kamilia, pending finance check)",who:"done",done:true},
+   {t:"Place the order once finance clears",who:"this week"},
+   {t:"Confirm delivery lands by Aug 15",who:"after order"}]},
  {n:3,title:"Budget",owner:"Jermaine · Kathleen Coney",chip:"wait",chipText:"To build",due:"Aug 1",
   items:[
    {t:"Build the 2026 one-pager in the standard format",who:"by Jul 25"},
@@ -134,14 +134,14 @@ var WS=[
  {n:4,title:"Vendors & Rentals",owner:"LaToya Elliott · Jermaine",chip:"warn",chipText:"In progress",due:"Aug 1",
   items:[
    {t:"Stage secured and paid (Oakland County Parks)",who:"done",done:true},
-   {t:"Sit down on setup and items (Event Suppliers, Quote 68159129)",who:"by Jul 15"},
-   {t:"Confirm and pay tents, chairs, tables (about $2,321)",who:"by Aug 1"},
-   {t:"Book sanitation (Turner, about $450)",who:"by Aug 1"},
+   {t:"Pick the tent vendor (Event Suppliers vs More Than Bounce)",who:"this week"},
+   {t:"Confirm and pay tents, chairs, tables",who:"by Aug 1"},
+   {t:"Sanitation booked (Turner) — drop 8:30, pickup 3:30",who:"done",done:true},
    {t:"Bike racks, generator, U-Haul",who:"by Aug 8"}]},
  {n:5,title:"Permit & Insurance",owner:"LaToya Elliott",chip:"hot",chipText:"Action",due:"Aug 12",
   items:[
-   {t:"Insurance certificate adding City of Detroit as co-insurer (address in the 6/30 email)",who:"by Jul 15"},
-   {t:"Re-file the City of Detroit park permit (about $415)",who:"by Jul 25"},
+   {t:"City park permit approved (TMP2026-00260)",who:"done",done:true},
+   {t:"Insurance: send Chui the final vendor list, then Rev. Anthony signs",who:"this week"},
    {t:"Collect vendor insurance certificates",who:"by Aug 12"}]},
  {n:6,title:"Food",owner:"Star Edison",chip:"wait",chipText:"Not started",due:"Aug 12",
   items:[
@@ -151,7 +151,7 @@ var WS=[
    {t:"Assign a food-line lead and start the grill early",who:"by Aug 12"}]},
  {n:7,title:"Games & Entertainment",owner:"Jermaine · LaToya Elliott",chip:"warn",chipText:"Reply due",due:"Aug 12",
   items:[
-   {t:"Review the Coloring Museum proposal and reply to Tierra Jones",who:"by Jul 11"},
+   {t:"Review the Coloring Museum proposal and reply to Tierra Jones",who:"this week"},
    {t:"Re-book DJ, Smiley the Clown, game truck (Bryant George)",who:"by Aug 1"},
    {t:"Confirm the bounce house and assign a supervisor",who:"by Aug 8"},
    {t:"Plan the youth activity stations",who:"by Aug 12"}]},
@@ -238,7 +238,7 @@ function render(){
   var soon=[];
   WS.forEach(function(w){w.items.forEach(function(it,i){
     if(isDone(w.n,i,it.done))return;
-    var by=it.who; if(/Jul 8|Jul 11|Jul 14|Jul 15|Jul 16|Jul 18|Jul 20|Jul 22/.test(by)) soon.push({w:w,it:it,i:i});
+    var by=it.who; if(/this week/i.test(by)) soon.push({w:w,it:it,i:i});
   });});
   soon.forEach(function(s){ doHtml+='<div class="card"><div class="row"><div class="num">'+s.w.n+'</div>'+
     '<div class="t"><h3>'+esc(s.it.t)+'</h3><p>'+esc(s.w.title)+' · '+esc(s.w.owner)+'</p></div>'+
@@ -273,7 +273,7 @@ function render(){
    '<div class="sec">Open the deeper tools</div>'+
    '<a class="lk" href="https://github.com/Pathworth/naacp-back-to-school-2026/issues" target="_blank">GitHub issues board<span>The same 13 workstreams, with comments and history</span></a>'+
    '<a class="lk" href="https://github.com/Pathworth/naacp-back-to-school-2026/milestones" target="_blank">Milestones<span>Every due date on a calendar</span></a>'+
-   '<div class="foot">Kept by Emma · reviewed Jul 1, 2026 · checks save to this phone<br>Inbox checked · no new movement since last pass</div>';
+   '<div class="foot">Kept by Emma · reviewed Jul 22, 2026 · checks save to this phone<br>City permit approved · sanitation booked · backpack pick set</div>';
   var cd2=document.getElementById('cd2'); if(cd2){var d=daysTo();cd2.textContent=d;}
 }
 
